@@ -100,20 +100,12 @@ refs.form.addEventListener('submit', event => {
   }
   function showLoader(isLoading) {
   if (isLoading) {
-    refs.loader.classList.remove('hidden');
+    return refs.loader.classList.remove('hidden');
   } else {
-    refs.loader.classList.add('hidden');
+     return refs.loader.classList.add('hidden');
   }
 }
-  function hideLoader() {
-    setTimeout(() => {
-      refs.loader.classList.add('hidden');
-    }, 250);
-  }
-
-  function showLoader() {
-    refs.loader.classList.remove('hidden');
-  }
+  
 })
 
 
