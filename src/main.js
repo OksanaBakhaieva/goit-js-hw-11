@@ -105,7 +105,15 @@ refs.form.addEventListener('submit', event => {
     refs.loader.classList.add('hidden');
   }
 }
-  
+  function hideLoader() {
+    setTimeout(() => {
+      refs.loader.classList.add('hidden');
+    }, 250);
+  }
+
+  function showLoader() {
+    refs.loader.classList.remove('hidden');
+  }
 })
 
 
