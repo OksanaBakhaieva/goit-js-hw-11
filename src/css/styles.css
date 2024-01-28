@@ -46,12 +46,14 @@ img {
 .gallery-item {
   border: 0.02px solid #000;
   flex-basis: calc((100% - 48px) / 3);
+  box-shadow: 2px 2px 2px 2px #000;
+  transition: transform 1s;
 }
 
 .gallery-item:hover {
   transform: scale(1.05);
-  border-color: #4e75ff;
-  box-shadow: 4px 4px 4px 4px #4e75ff;
+  border: 1px solid #4e75ff;
+  box-shadow: 2px 2px 4px 4px #4e75ff;
   transition: transform 1s;
 }
 

@@ -6,6 +6,11 @@ import { refs } from './js/refs';
 import { fetchImages } from './js/pixayApi';
 import { createMarkup } from './js/render-function';
 
+const simplyGallery = new SimpleLightbox('.gallery-item a', {
+        captionsData: 'alt',
+        captionDelay: 250,
+});
+
 refs.form.addEventListener('submit', event => {
   event.preventDefault();
   const query = refs.input.value.trim();
@@ -15,6 +20,7 @@ refs.form.addEventListener('submit', event => {
       `The search field can't be empty! Please, enter your request!`
     );
     return;
+    hideLoader();
   }
    
   function createMessage(message) {
@@ -42,13 +48,11 @@ refs.form.addEventListener('submit', event => {
 
       refs.gallery.innerHTML = createMarkup(data.hits);
       hideLoader();
-      const simplyGallery = new SimpleLightbox('.gallery-item a', {
-        captionsData: 'alt',
-        captionDelay: 250,
-      });
-      refs.form.reset();
+      simplyGallery.refresh();
     })
-    .catch(error => console.error(error));
+    .catch(error => console.error(error)).finally(() => {
+      refs.form.reset()
+    });
  
   function hideLoader() {
     setTimeout(() => {
